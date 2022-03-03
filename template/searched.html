@@ -1,16 +1,70 @@
-<!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!-- CSS only -->
+<html>
+    <head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+    @layer utilities 
+    {      
+        .content-auto 
+        {        
+            content-visibility: auto;      
+        }    
+    }
+    </style>
+        <title>
+            stored movies
+        </title>
+<style>
+    body{
+        background:#111827 !important;
+    }
+    .flexx{
+        margin:auto;
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+    }
+    
+    .movie-data
+    {
+        border-radius:25px;
+        width:21% !important;
+        background:white;
+        height:50%;
+        padding:2%;
+        margin:5%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .movie-data:hover{
+        transform:scale(1.2);
+        transition: ease 1s;
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+    .movie-data img{
+        height:250px;
+        width:100%;
+    }
+</style>
+
 </head>
 <body>
+  {% include "header.html" %}
+    <div class="flexx">
+    {% for i in data %}
+        <div class="movie-data">
+         <h2 style="align-items:center; text-align:center;text-transform: uppercase; font-size:x-large; ">{{i.title}}</h2>
+            <img src={{i.poster}}>
+            <p>
+            {{i.plot}}
+            </p>
+        </div>
+        
+{% endfor %}
+    </div>
+  {% include "footer.html"%}
 
-    
-
-    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
